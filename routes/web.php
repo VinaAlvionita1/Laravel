@@ -14,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Route::post('/login', 'App\Http\Controllers\UserController@login');
+
+Route::get('/home', function () {
+    return view('home', ['nama' => 'Administrator',
+    'jabatan' => 'admin']);
 });
 
 Route::get('/greeting', function () {
@@ -37,10 +44,6 @@ Route::get('/users/{id}', function ($id) {
 
 Route::get('/post/{post}/comment/{comment}', function ($postId, $commantId) {
     return 'ada di post '.$postId.' komen di '.$commantId;
-});
-
-Route::get('/user/{name}', function ($name) {
-    
 });
 
 Route::get('/user/{name}', function ($name) {
